@@ -1,0 +1,31 @@
+{
+  "name": "cafetube",
+  "version": "1.0.0",
+  "description": "Media upload site CafeTube (youtube clone cording)",
+  "main": "init.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/init.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NwebMyosotis/cafetube.git"
+  },
+  "keywords": [
+    "cafetube"
+  ],
+  "author": "이초현",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NwebMyosotis/cafetube/issues"
+  },
+  "homepage": "https://github.com/NwebMyosotis/cafetube#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/node": "^7.20.7",
+    "@babel/preset-env": "^7.20.2",
+    "nodemon": "^2.0.20"
+  }
+}
