@@ -1,15 +1,15 @@
 export const home = (req, res) => {
-  res.send("home");
+  return res.render("home", { pageTitle: "Home" });
 };
 
 export const getWatch = (req, res) => {
-  res.send("watch video");
+  return res.render("videos/watch", { pageTitle: "Watch" });
 };
 
 export const getUpload = (req, res) => {
-  res.send("upload");
+  return res.render("videos/upload", { pageTitle: "Upload" });
 };
 
 export const getEdit = (req, res) => {
-  res.send("edit video");
+  return res.render("videos/edit-video", { pageTitle: "Edit Video" });
 };
