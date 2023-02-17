@@ -1,2 +1,7 @@
 extends ../base
 block content 
+    form(method="POST")
+        input(type="text" placeholder="제목" required id="title" name="title" value=video.title)
+        input(type="text" placeholder="설명" required id="description" name="description" value=video.description)
+        input(type="text" placeholder="해시태그" id="hashtags" name="hashtags" value=video.hashtags.join(' '))
+        input(type="submit" value="수정")

@@ -8,6 +8,8 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 
+app.use(express.urlencoded({ extended: true })); //express가 form을 인식하게 함.
+
 app.use("/", rootRouter);
 app.use("/user", userRouter);
 app.use("/video", videoRouter);

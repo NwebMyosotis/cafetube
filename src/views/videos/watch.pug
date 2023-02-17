@@ -1,2 +1,8 @@
 extends ../base
 block content 
+    h2=video.title
+    small #{video.createdAt} | #{video.hashtags.join(" ")}
+    p=video.description
+    a(href=`${video._id}/edit`) 수정
+    span |
+    a(href=`${video._id}/delete`) 삭제

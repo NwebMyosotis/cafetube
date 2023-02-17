@@ -1,9 +1,9 @@
 header
     h1 
-        a(href="/") #{pageTitle}
-    form 
-        input(type="text", placeholder="검색")
-        input(type="submit")
+        a(href="/") CafeTube
+    form(method="GET" action="/")
+        input(type="text", placeholder="검색" id="search" name="search")
+        input(type="submit" value="검색")
     nav
         ul 
             li 

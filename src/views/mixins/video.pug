@@ -1,0 +1,5 @@
+mixin videoMixin(video)
+    a(href=`/video/${video.id}`)
+        h2=video.title
+    p=video.createdAt
+    p=video.description
