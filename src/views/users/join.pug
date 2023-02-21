@@ -1,2 +1,14 @@
 extends ../base
-block content 
+block content
+    h2 Join
+    form(method="POST")
+        span=errorMessage
+        input(type="text", placeholder="성명" name="name" required)
+        input(type="text" placeholder="아이디" name="userId" minlength=4 maxlength=20 required)
+        input(type="password" placeholder="비밀번호" name="password" minlength=8 maxlength=64 required)
+        input(type="password" placeholder="비밀번호 확인" name="password2" minlength=8 maxlength=64 required)
+        input(type="email" placeholder="이메일" name="email" required)
+        input(type="text" placeholder="닉네임" name="nickname" minlength=4 maxlength=20 required)
+        input(type="submit" value="로그인")
+    span 이미 계정이 존재하나요? 
+        a(href="/login")  가입

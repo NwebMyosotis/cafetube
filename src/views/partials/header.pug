@@ -2,17 +2,19 @@ header
     h1 
         a(href="/") CafeTube
     form(method="GET" action="/")
-        input(type="text", placeholder="검색" id="search" name="search")
+        input(type="search", placeholder="검색" id="search" name="search")
         input(type="submit" value="검색")
     nav
-        ul 
-            li 
-                a(href="/join") 회원가입
-            li 
-                a(href="/login") 로그인
-            li 
-                a(href="/user/000000000000000000000000") 프로필
-            li 
-                a(href="/video/upload") 업로드
-            li 
-                a(href="/logout") 로그아웃
+        ul
+            if !loggedIn
+                li 
+                    a(href="/join") 회원가입
+                li 
+                    a(href="/login") 로그인
+            else
+                li 
+                    a(href=`/user/${loggedInUser._id}`) #{loggedInUser.nickname}
+                li 
+                    a(href="/video/upload") 업로드
+                li 
+                    a(href="/user/logout") 로그아웃
