@@ -25,6 +25,13 @@ const userSchema = new mongoose.Schema({
   },
   email: { type: String, required: true, trim: true, unique: true },
   name: { type: String, required: true, trim: true },
+  avatarUrl: {
+    type: String,
+    required: true,
+    default: "empty",
+    trim: true,
+  },
+  socialLogin: { type: Boolean, default: false, required: true },
 });
 
 userSchema.pre("save", async function () {

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 mongoose.set("strictQuery", true);
-mongoose.connect("mongodb://127.0.0.1:27017/cafetube");
+mongoose.connect(process.env.MONGO_URL);
 
 const db = mongoose.connection;
 const handleError = (error) => console.log("DB Error", error);

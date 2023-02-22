@@ -1,6 +1,9 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
 import session from "express-session";
+import "dotenv/config";
+import fetch from "cross-fetch";
+import { token } from "morgan";
 
 export const getLogin = (req, res) => {
   return res.render("users/login", { pageTitle: "Login" });
@@ -26,6 +29,90 @@ export const postLogin = async (req, res) => {
   req.session.loggedIn = true;
   req.session.user = user;
   return res.status(200).redirect("/");
+};
+
+export const startGithubLogin = (req, res) => {
+  const baseUrl = "https://github.com/login/oauth/authorize";
+  const config = {
+    client_id: process.env.GITHUB_CLIENT,
+    scope: "read:user user:email",
+  };
+  const params = new URLSearchParams(config).toString();
+  const authorizeUrl = `${baseUrl}?${params}`;
+  return res.redirect(authorizeUrl);
+};
+
+export const finishGithubLogin = async (req, res) => {
+  const baseUrl = "https://github.com/login/oauth/access_token";
+  const config = {
+    client_id: process.env.GITHUB_CLIENT,
+    client_secret: process.env.GITHUB_SECRET,
+    code: req.query.code,
+  };
+  const params = new URLSearchParams(config).toString();
+  const accessTokenUrl = `${baseUrl}?${params}`;
+
+  const tokenRequest = await (
+    await fetch(accessTokenUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+  ).json();
+  if ("access_token" in tokenRequest) {
+    const { access_token } = tokenRequest;
+    const apiUrl = "https://api.github.com/user";
+    const userData = await (
+      await fetch(apiUrl, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+    ).json();
+    const emailData = await (
+      await fetch(`${apiUrl}/emails`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+    ).json();
+    const userEmail = emailData.find(
+      (emailObj) => emailObj.primary === true && emailObj.verified === true
+    );
+    if (!userEmail) {
+      return res.status(400).render("users/login", {
+        pageTitle: "Login",
+        errorMessage: "깃허브 계정에 이메일이 존재하지 않습니다.",
+      });
+    }
+    let user = await User.findOne({ email: userEmail.email });
+    if (!user) {
+      user = await User.create({
+        userId: userData.login,
+        password: `${userData.name}#${userData.id}`,
+        nickname: userData.name,
+        email: userEmail.email,
+        name: userData.name,
+        socialLogin: true,
+        avatarUrl: userData.avatar_url,
+      });
+    }
+    if (user.socialLogin === false) {
+      return res.status(400).render("users/login", {
+        pageTitle: "Login",
+        errorMessage: "해당 이메일을 사용중인 계정이 이미 존재합니다.",
+      });
+    }
+    req.session.loggedIn = true;
+    req.session.user = user;
+    return res.redirect("/");
+  } else {
+    return res.status(400).render("users/login", {
+      pageTitle: "Login",
+      errorMessage: "토큰이 없습니다.",
+    });
+  }
 };
 
 export const logout = (req, res) => {
