@@ -170,10 +170,56 @@ export const postJoin = async (req, res) => {
   }
 };
 
-export const getProfile = (req, res) => {
-  return res.render("users/profile", { pageTitle: "Profile" });
+export const getProfile = async (req, res) => {
+  const { user } = req.session;
+  const userData = await User.findById(user._id);
+  return res.render("users/profile", { pageTitle: "Profile", userData });
 };
 
-export const getEdit = (req, res) => {
-  return res.render("users/edit-profile", { pageTitle: "Edit Profile" });
+export const getEdit = async (req, res) => {
+  const { user } = req.session;
+  return res.render("users/edit-profile", { pageTitle: "Edit Profile", user });
+};
+
+export const postEdit = async (req, res) => {
+  const {
+    user,
+    user: { _id },
+  } = req.session;
+  const { name, email, nickname } = req.body;
+
+  const nameCompare = user.name === name;
+  const emailCompare = user.email === email;
+  const nicknameCompare = user.nickname === nickname;
+  if (nameCompare & emailCompare & nicknameCompare) {
+    return res.redirect(`/user/${_id}/edit`);
+  }
+  const findEmail = await User.exists({ email });
+  if (findEmail && !emailCompare) {
+    return res.render("users/edit-profile", {
+      pageTitle: "Edit Profile",
+      errorMessage: "이미 존재하는 이메일 입니다.",
+      user,
+    });
+  }
+  const findNickname = await User.exists({ nickname });
+  if (findNickname && !nicknameCompare) {
+    return res.render("users/edit-profile", {
+      pageTitle: "Edit Profile",
+      errorMessage: "이미 존재하는 닉네임 입니다.",
+      user,
+    });
+  }
+
+  const updateUser = await User.findByIdAndUpdate(
+    _id,
+    {
+      name,
+      email,
+      nickname,
+    },
+    { new: true } //업데이트 후 반환??? -> update는 변수로 지정시 변경전의 값을 반환함. 이것을 변경 후의 값을 반환하도록 설정해줌.
+  );
+  req.session.user = updateUser;
+  return res.redirect(`/user/${_id}`);
 };

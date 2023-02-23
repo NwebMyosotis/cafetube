@@ -1,2 +1,8 @@
 extends ../base
 block content
+    div 
+        h3=userData.nickname
+            small=` | ${userData.name}` 
+        p=userData.email 
+
+    a(href=`${userData._id}/edit`) 프로필 변경

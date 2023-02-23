@@ -1,2 +1,9 @@
 extends ../base
-block content 
+block content
+    h2 Edit Profile
+    form(method="POST")
+        span=errorMessage
+        input(type="text", placeholder="성명" name="name" required value=user.name)
+        input(type="email" placeholder="이메일" name="email" required value=user.email)
+        input(type="text" placeholder="닉네임" name="nickname" minlength=4 maxlength=20 required value=user.nickname)
+        input(type="submit" value="프로필 변경")

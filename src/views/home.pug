@@ -2,7 +2,8 @@ extends base
 include mixins/video
 
 block content
-        each video in videos
-            +videoMixin(video)
-        else 
-            span 검색결과가 없습니다.
+    span=errorMessage
+    each video in videos
+        +videoMixin(video)
+    else 
+        span 검색결과가 없습니다.
