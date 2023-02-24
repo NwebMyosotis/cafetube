@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const userSchema = new mongoose.Schema({
+  videos: [{ type: mongoose.Schema.Types.ObjectId, ref: "Video" }],
   nickname: {
     type: String,
     required: true,
@@ -28,7 +29,7 @@ const userSchema = new mongoose.Schema({
   avatarUrl: {
     type: String,
     required: true,
-    default: "empty",
+    default: "/uploads/avatars/00c5248098e141ae69b9abaafefdf2a7",
     trim: true,
   },
   socialLogin: { type: Boolean, default: false, required: true },

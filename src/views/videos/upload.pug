@@ -1,6 +1,8 @@
 extends ../base
 block content 
-    form(method="POST")
+    form(method="POST" enctype="multipart/form-data")
+        label(for="video") 비디오 업로드
+        input(type="file" id="video" name="video" required accept="video/*") 
         input(type="text" placeholder="제목" required id="title" name="title")
         input(type="text" placeholder="설명" required id="description" name="description")
         input(type="text" placeholder="해시태그" id="hashtags" name="hashtags")

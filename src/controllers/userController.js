@@ -171,9 +171,15 @@ export const postJoin = async (req, res) => {
 };
 
 export const getProfile = async (req, res) => {
-  const { user } = req.session;
-  const userData = await User.findById(user._id);
-  return res.render("users/profile", { pageTitle: "Profile", userData });
+  const { id } = req.params;
+  const userData = await User.findById(id);
+  if (!userData) {
+    return res.status(404).render("404", { pageTitle: "User Not Found" });
+  }
+  return res.render("users/profile", {
+    pageTitle: userData.nickname,
+    userData,
+  });
 };
 
 export const getEdit = async (req, res) => {
@@ -182,18 +188,13 @@ export const getEdit = async (req, res) => {
 };
 
 export const postEdit = async (req, res) => {
-  const {
-    user,
-    user: { _id },
-  } = req.session;
+  const { user } = req.session;
   const { name, email, nickname } = req.body;
+  const { file } = req;
 
   const nameCompare = user.name === name;
   const emailCompare = user.email === email;
   const nicknameCompare = user.nickname === nickname;
-  if (nameCompare & emailCompare & nicknameCompare) {
-    return res.redirect(`/user/${_id}/edit`);
-  }
   const findEmail = await User.exists({ email });
   if (findEmail && !emailCompare) {
     return res.render("users/edit-profile", {
@@ -212,14 +213,15 @@ export const postEdit = async (req, res) => {
   }
 
   const updateUser = await User.findByIdAndUpdate(
-    _id,
+    user._id,
     {
       name,
       email,
       nickname,
+      avatarUrl: file ? "/" + file.path : user.avatarUrl,
     },
-    { new: true } //업데이트 후 반환??? -> update는 변수로 지정시 변경전의 값을 반환함. 이것을 변경 후의 값을 반환하도록 설정해줌.
+    { new: true }
   );
   req.session.user = updateUser;
-  return res.redirect(`/user/${_id}`);
+  return res.redirect(`/user/${user._id}`);
 };

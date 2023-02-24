@@ -1,7 +1,12 @@
 import mongoose from "mongoose";
 
 const videoSchema = new mongoose.Schema({
-  uploader: { type: String },
+  uploader: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
+  videoUrl: { type: String, required: true },
   title: { type: String, required: true, maxLength: 50, trim: true },
   description: { type: String, maxLength: 200, trim: true },
   createdAt: { type: Date, required: true, default: Date.now },

@@ -1,9 +1,12 @@
 extends ../base
 block content
     h2 Edit Profile
-    form(method="POST")
+    form(method="POST" enctype="multipart/form-data")
         span=errorMessage
-        input(type="text", placeholder="성명" name="name" required value=user.name)
-        input(type="email" placeholder="이메일" name="email" required value=user.email)
-        input(type="text" placeholder="닉네임" name="nickname" minlength=4 maxlength=20 required value=user.nickname)
+        img(src=`${loggedInUser.avatarUrl}` width=100)
+        label(for="avatar") 프로필사진
+        input(type="file" accept="image/*" name="avatar" id="avatar" files)
+        input(type="text" placeholder="성명" name="name" required value=loggedInUser.name)
+        input(type="email" placeholder="이메일" name="email" required value=loggedInUser.email)
+        input(type="text" placeholder="닉네임" name="nickname" minlength=4 maxlength=20 required value=loggedInUser.nickname)
         input(type="submit" value="프로필 변경")

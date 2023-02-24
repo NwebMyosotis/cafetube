@@ -1,8 +1,9 @@
 extends ../base
 block content
     div 
+        img(src=userData.avatarUrl width=200)
         h3=userData.nickname
             small=` | ${userData.name}` 
         p=userData.email 
-
-    a(href=`${userData._id}/edit`) 프로필 변경
+    if userData._id === loggedInUser._id
+        a(href=`${loggedInUser._id}/edit`) 프로필 변경

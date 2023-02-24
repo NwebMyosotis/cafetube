@@ -1,8 +1,12 @@
 extends ../base
 block content 
+    video(src="/" + video.videoUrl, controls, height=700)
     h2=video.title
-    small #{video.createdAt} | #{video.hashtags.join(" ")}
+    a(href=`/user/${video.uploader._id}`)
+        p=video.uploader.nickname
+            small  | #{video.createdAt} | #{video.hashtags.join(" ")}
     p=video.description
-    a(href=`${video._id}/edit`) 수정
-    span |
-    a(href=`${video._id}/delete`) 삭제
+    if String(loggedInUser._id) === String(video.uploader._id)
+        a(href=`${video._id}/edit`) 수정
+        span  | 
+        a(href=`${video._id}/delete`) 삭제
