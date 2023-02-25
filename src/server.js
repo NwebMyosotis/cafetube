@@ -27,6 +27,8 @@ app.use(
 
 app.use(localLoggedIn);
 app.use("/uploads", express.static("uploads"));
+app.use("/static", express.static("assets"));
+
 app.use("/", rootRouter);
 app.use("/user", userRouter);
 app.use("/video", videoRouter);
