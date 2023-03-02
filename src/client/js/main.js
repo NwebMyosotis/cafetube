@@ -1,3 +1,1 @@
-import "../scss/style.scss";
-
-alert("Tlqkf!!");
+import "../scss/styles.scss";

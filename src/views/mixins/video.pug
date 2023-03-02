@@ -1,5 +1,10 @@
 mixin videoMixin(video)
-    a(href=`/video/${video.id}`)
-        h2=video.title
-    p=video.createdAt
-    p=video.description
+    a(href=`/video/${video.id}` class="video-area")
+        div(class="video__tumbnail")
+        div(class="video-info")
+            div(class="video-info__avatar")
+                img(src=video.uploader.avatarUrl width=50)
+            div(class="video-info__description")
+                h2=video.title
+                small=video.uploader.nickname
+                small=video.createdAt

@@ -7,11 +7,11 @@ module.exports = {
   watch: true,
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/style.css",
+      filename: "css/styles.css",
     }),
   ],
   output: {
-    filename: "js/main.js",
+    filename: "js/[name].js",
     path: path.resolve(__dirname, "assets"),
     clean: true,
   },

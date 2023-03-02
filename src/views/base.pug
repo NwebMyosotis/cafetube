@@ -3,10 +3,11 @@ html(lang="en")
         meta(charset="UTF-8")
         title #{pageTitle} | Cafetube
         link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css")
-        link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet" href="/static/css/styles.css")
     body
         include partials/header
-        main 
+        main
+            div(class="dummy__header")
             block content
     include partials/footer
     script(src="/static/js/main.js")

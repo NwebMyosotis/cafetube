@@ -5,7 +5,7 @@ export const home = async (req, res) => {
   const { search } = req.query;
   let videos = [];
   if (!search) {
-    videos = await Video.find({});
+    videos = await Video.find({}).populate("uploader");
   } else {
     videos = await Video.find({
       title: {

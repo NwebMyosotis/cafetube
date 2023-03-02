@@ -1,20 +1,32 @@
 header
-    h1 
-        a(href="/") #{siteName}
-    form(method="GET" action="/")
-        input(type="search", placeholder="검색" id="search" name="search")
-        input(type="submit" value="검색")
-    nav
-        ul
-            if !loggedIn
+    div(class="header-logo")
+        a(href="/") 
+            img(src="../uploads/img/logo.png")
+    form(method="GET" action="/" class="search-form")
+        input(type="search", placeholder="검색 키워드를 입력하세요." class="search-input" id="search" name="search")
+        button(type="submit" class="search-button")
+            i(class="fa-solid fa-magnifying-glass")
+    if !loggedIn
+        nav(class="header-nav")
+            ul
                 li 
-                    a(href="/join") 회원가입
+                    a(href="/join" id="nav_join") 회원가입
                 li 
-                    a(href="/login") 로그인
-            else
-                li 
-                    a(href=`/user/${loggedInUser._id}`) #{loggedInUser.nickname}
-                li 
-                    a(href="/video/upload") 업로드
-                li 
-                    a(href="/user/logout") 로그아웃
+                    a(href="/login" id="nav_login") 로그인
+    else
+        nav(class="header-nav__loggedIn")
+            div(class="header-nav__loggedIn_area")
+                img(class="header-nav__avatar" src=loggedInUser.avatarUrl)
+                ul(class="header-nav__ul")
+                    li(id="button__mypage")
+                        a(href=`/user/${loggedInUser._id}`)
+                            i(class="fa-solid fa-user")
+                            span Mypage
+                    li(id="button__upload")
+                        a(href="/video/upload")
+                            i(class="fa-solid fa-video")
+                            span Upload
+                    li(id="button__logout")
+                        a(href="/user/logout")
+                            i(class="fa-solid fa-right-from-bracket")
+                            span Logout

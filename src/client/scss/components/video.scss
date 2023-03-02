@@ -1,0 +1,31 @@
+.video-area {
+  text-decoration: none;
+  color: black;
+  .video__tumbnail {
+    aspect-ratio: 16 / 9;
+    border-radius: 10px;
+    background-color: gray;
+  }
+  .video-info {
+    display: flex;
+    margin-top: 10px;
+    .video-info__avatar {
+      margin-right: 5px;
+      border-radius: 50%;
+    }
+    .video-info__description {
+      margin-left: 5px;
+      h2 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px 0;
+      }
+      small {
+        font-size: 15px;
+        display: block;
+        color: rgb(78, 78, 78);
+        margin-bottom: 3px;
+      }
+    }
+  }
+}

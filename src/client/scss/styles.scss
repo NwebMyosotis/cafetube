@@ -1,0 +1,33 @@
+// configs
+@import "./configs/reset";
+
+// screens
+
+// components
+@import "./components/header.scss";
+@import "./components/video.scss";
+
+// defalut
+.dummy__header {
+  height: 100px;
+}
+
+main {
+  padding: 0 10%;
+}
+
+footer {
+  border: 1px solid black;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 100px;
+}
+
+.video-grid {
+  min-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(347px, 1fr));
+  margin: 25px 0;
+  gap: 25px;
+  justify-content: center;
+}

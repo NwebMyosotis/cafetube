@@ -3,7 +3,12 @@ include mixins/video
 
 block content
     span=errorMessage
-    each video in videos
-        +videoMixin(video)
-    else 
-        span 검색결과가 없습니다.
+    div(class="video-grid")
+        each video in videos
+            +videoMixin(video)
+            +videoMixin(video)
+            +videoMixin(video)
+            +videoMixin(video)
+            +videoMixin(video)
+        else 
+            span 검색결과가 없습니다.
