@@ -2,17 +2,19 @@
 @import "./configs/reset";
 
 // screens
+@import "./screens/watch.scss";
 
 // components
 @import "./components/header.scss";
 @import "./components/video.scss";
+@import "./components/video-form.scss";
 
 // defalut
 .dummy__header {
   height: 100px;
 }
 
-main {
+.side-space {
   padding: 0 10%;
 }
 

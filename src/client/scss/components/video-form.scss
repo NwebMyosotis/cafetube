@@ -1,0 +1,77 @@
+.area__upload {
+  width: 100%;
+  min-width: 1200px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .area__upload-title {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+      font-size: 35px;
+      font-weight: bold;
+    }
+  }
+}
+.area__video-form {
+  width: 100%;
+  display: flex;
+  .video-preview {
+    background-color: black;
+    border-radius: 10px;
+    width: 50%;
+    aspect-ratio: 16 / 9;
+  }
+  form {
+    width: 50%;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    label {
+      font-size: 14px;
+      color: gray;
+    }
+    input {
+      height: 15%;
+      border: 1px solid gray;
+      border-radius: 10px;
+      padding-left: 11px;
+      margin: 5px 0;
+      font-size: 1vw;
+    }
+
+    input[type="file"] {
+      padding-top: 1.4%;
+      color: gray;
+    }
+    input::file-selector-button {
+      border: 1px solid darkgray;
+      width: 15%;
+      height: 70%;
+      background-color: rgb(222, 222, 222);
+      border-radius: 5px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    input::file-selector-button:hover {
+      background-color: rgb(196, 196, 196);
+    }
+    input[type="submit"] {
+      background-color: #cbb292;
+      color: white;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #7f6e5d;
+    }
+  }
+  .form__video-edit {
+    input {
+      height: 13%;
+    }
+  }
+}

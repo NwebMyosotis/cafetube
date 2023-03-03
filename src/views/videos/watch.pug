@@ -1,12 +1,23 @@
 extends ../base
 block content 
-    video(src="/" + video.videoUrl, controls, height=700)
-    h2=video.title
-    a(href=`/user/${video.uploader._id}`)
-        p=video.uploader.nickname
-            small  | #{video.createdAt} | #{video.hashtags.join(" ")}
-    p=video.description
-    if String(loggedInUser._id) === String(video.uploader._id)
-        a(href=`${video._id}/edit`) 수정
-        span  | 
-        a(href=`${video._id}/delete`) 삭제
+    div(class="watch__video-area")
+        video(src="/" + video.videoUrl, controls, class="watch__video")
+    div(class="side-space")
+        div(class="watch__info")
+            h2(class="watch__title")=video.title
+            div(class="watch__move")
+                a(class="watch__uploader-anchor" href=`/user/${video.uploader._id}`)
+                    img(src=video.uploader.avatarUrl class="watch__uploader-avatar")
+                    div(class="watch__uploader-info")
+                        p=video.uploader.nickname
+                        small=video.uploader.email
+                div(class="watch__move_control")
+                    if String(loggedInUser._id) === String(video.uploader._id)
+                        a(href=`${video._id}/edit`) 
+                            i(class="fa-solid fa-pen-nib")  수정
+                        a(href=`${video._id}/delete`) 
+                            i(class="fa-solid fa-trash")  삭제
+            div(class="watch__info_description")
+                small(class="watch__createdAt") #{video.createdAt}
+                small(class="watch__hashtags")   #{video.hashtags.join(" ")}
+                p(class="watch__description")=video.description
