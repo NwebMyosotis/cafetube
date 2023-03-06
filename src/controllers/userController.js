@@ -172,13 +172,14 @@ export const postJoin = async (req, res) => {
 
 export const getProfile = async (req, res) => {
   const { id } = req.params;
-  const userData = await User.findById(id);
+  const userData = await User.findById(id).populate("videos");
   if (!userData) {
     return res.status(404).render("404", { pageTitle: "User Not Found" });
   }
   return res.render("users/profile", {
     pageTitle: userData.nickname,
     userData,
+    videos: userData.videos,
   });
 };
 

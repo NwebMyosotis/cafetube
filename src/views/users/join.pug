@@ -1,14 +1,21 @@
 extends ../base
 block content
-    h2 Join
-    form(method="POST")
-        span=errorMessage
-        input(type="text", placeholder="성명" name="name" required)
-        input(type="text" placeholder="아이디" name="userId" minlength=4 maxlength=20 required)
-        input(type="password" placeholder="비밀번호" name="password" minlength=8 maxlength=64 required)
-        input(type="password" placeholder="비밀번호 확인" name="password2" minlength=8 maxlength=64 required)
-        input(type="email" placeholder="이메일" name="email" required)
-        input(type="text" placeholder="닉네임" name="nickname" minlength=4 maxlength=20 required)
-        input(type="submit" value="로그인")
-    span 이미 계정이 존재하나요? 
-        a(href="/login")  가입
+    div(class="user-form__background")
+        div(class="side-space")
+            div(class="area__user-form")
+                h2 CafeTube 회원가입
+                form(method="POST")
+                    span=errorMessage
+                    input(type="text", placeholder="성명" name="name" required)
+                    input(type="text" placeholder="아이디" name="userId" minlength=4 maxlength=20 required)
+                    input(type="password" placeholder="비밀번호" name="password" minlength=8 maxlength=64 required)
+                    input(type="password" placeholder="비밀번호 확인" name="password2" minlength=8 maxlength=64 required)
+                    input(type="email" placeholder="이메일" name="email" required)
+                    input(type="text" placeholder="닉네임" name="nickname" minlength=4 maxlength=20 required)
+                    input(type="submit" value="회원가입")
+                    hr
+                    a(href="/user/github/start" class="button__github-login") 
+                        i(class="fa-brands fa-github") 
+                        span Github로 계속하기
+                span.button__go-account 이미 계정이 존재하나요? 
+                    a(href="/login") 지금 로그인 하세요.

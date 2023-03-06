@@ -1,9 +1,23 @@
 extends ../base
+include ../mixins/video
+
 block content
-    div 
-        img(src=userData.avatarUrl width=200)
+    div.area__profile
+        img(src=userData.avatarUrl).profile__avatar
         h3=userData.nickname
-            small=` | ${userData.name}` 
         p=userData.email 
-    if userData._id === loggedInUser._id
-        a(href=`${loggedInUser._id}/edit`) 프로필 변경
+    div.area__edit-button
+        if String(userData._id) === loggedInUser._id
+            a(href=`${loggedInUser._id}/edit`) 프로필 변경
+    hr.profile__line
+    div(class="side-space")
+        span=errorMessage
+        div(class="video-grid")
+            each video in videos
+                +videoMixin(video)
+                +videoMixin(video)
+                +videoMixin(video)
+                +videoMixin(video)
+                +videoMixin(video)
+            else 
+                span 검색결과가 없습니다. 

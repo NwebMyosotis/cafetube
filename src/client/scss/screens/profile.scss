@@ -1,0 +1,44 @@
+.area__profile {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img {
+    width: 200px;
+    border-radius: 50%;
+  }
+  h3 {
+    font-weight: 600;
+    font-size: 40px;
+    margin-top: 10px;
+  }
+  p {
+    margin-top: 5px;
+    font-size: 20px;
+    color: gray;
+    font-weight: 400;
+  }
+}
+
+.area__edit-button {
+  display: flex;
+  justify-content: end;
+  a {
+    margin-right: 5%;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #744b3f;
+    text-decoration: none;
+    background-color: #b16e5c;
+    color: white;
+    border-radius: 13px;
+    font-size: 15px;
+  }
+}
+
+.profile__line {
+  margin: 0 5%;
+}

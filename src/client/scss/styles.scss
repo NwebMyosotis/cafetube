@@ -3,11 +3,14 @@
 
 // screens
 @import "./screens/watch.scss";
+@import "./screens/profile.scss";
+@import "./screens/edit-profile.scss";
 
 // components
 @import "./components/header.scss";
 @import "./components/video.scss";
 @import "./components/video-form.scss";
+@import "./components/user-form.scss";
 
 // defalut
 .dummy__header {
@@ -23,6 +26,8 @@ footer {
   text-align: center;
   padding-top: 10px;
   padding-bottom: 100px;
+  color: #cba793;
+  background-color: #3c2416;
 }
 
 .video-grid {

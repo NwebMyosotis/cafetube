@@ -1,0 +1,80 @@
+.user-form__background {
+  z-index: 0;
+  background-image: url(/uploads/img/background.svg);
+  background-size: cover;
+  opacity: 80%;
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.area__user-form {
+  border: 1px solid gray;
+  box-shadow: 1px 1px 3px black;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px;
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h2 {
+    font-size: 20pt;
+    text-align: center;
+    font-weight: bold;
+    margin: 25px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    input {
+      width: 520px;
+      height: 50px;
+      border: 1px solid gray;
+      border-radius: 15px;
+      padding: 0 20px;
+      margin-top: 15px;
+      font-size: 13pt;
+    }
+    input[type="submit"] {
+      background-color: #c0a786;
+      color: white;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+    hr {
+      width: 520px;
+    }
+    .button__github-login {
+      margin-top: 15px;
+      border: 1px solid gray;
+      border-radius: 15px;
+      width: 520px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      background-color: #111111;
+      font-size: 13pt;
+      font-weight: bold;
+      i {
+        font-size: 25px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .button__go-account {
+    text-align: center;
+    margin: 40px 0 5px 0;
+    font-size: 15px;
+    a {
+      color: #746358;
+    }
+  }
+}
