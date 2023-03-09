@@ -1,11 +1,13 @@
 .watch__video-area {
   background-color: black;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
   .watch__video {
-    width: 60%;
-    height: auto;
+    height: 80vh;
+    width: 100%;
   }
 }
 .watch__info {

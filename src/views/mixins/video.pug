@@ -3,7 +3,7 @@ mixin videoMixin(video)
         div(class="video__tumbnail")
         div(class="video-info")
             div(class="video-info__avatar")
-                img(src=video.uploader.avatarUrl || userData.avatarUrl width=50)
+                img(src=`${video.uploader.avatarUrl || userData.avatarUrl}` width=50)
             div(class="video-info__description")
                 h2=video.title
                 small=video.uploader.nickname

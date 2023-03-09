@@ -11,9 +11,11 @@ export const home = async (req, res) => {
       title: {
         $regex: new RegExp(search, "i"),
       },
-    });
+    }).populate("uploader");
   }
-  return res.status(200).render("home", { pageTitle: "Home", videos });
+  return res
+    .status(200)
+    .render("home", { pageTitle: "Home", videos, userData: "" });
 };
 
 export const getWatch = async (req, res) => {

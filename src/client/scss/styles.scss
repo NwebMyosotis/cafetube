@@ -2,6 +2,7 @@
 @import "./configs/reset";
 
 // screens
+@import "./screens/home.scss";
 @import "./screens/watch.scss";
 @import "./screens/profile.scss";
 @import "./screens/edit-profile.scss";
@@ -11,6 +12,7 @@
 @import "./components/video.scss";
 @import "./components/video-form.scss";
 @import "./components/user-form.scss";
+@import "./components/video-controls.scss";
 
 // defalut
 .dummy__header {

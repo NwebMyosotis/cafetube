@@ -1,7 +1,25 @@
 extends ../base
 block content 
     div(class="watch__video-area")
-        video(src="/" + video.videoUrl, controls, class="watch__video")
+        video(src="/" + video.videoUrl, class="watch__video")
+        div.area__video-controller
+            span#video__title=video.title
+            div.video-controller
+                div.controller-area
+                    span#play.playPause
+                        i(class="fa-solid fa-play")
+                    div#time
+                        span#currentTime 00:00:00
+                        span /
+                        span#totalTime 00:00:00
+                input(type="range", min="0", max="10" step="0.1")#timeBar
+                div#volume
+                    span#mute
+                        i(class="fa-solid fa-volume-high")
+                    input(type="range", min="0", max="1", step="0.1")#volumeBar
+                span#fullScreen
+                    i(class="fa-solid fa-expand")
+    
     div(class="side-space")
         div(class="watch__info")
             h2(class="watch__title")=video.title
@@ -21,3 +39,6 @@ block content
                 small(class="watch__createdAt") #{video.createdAt}
                 small(class="watch__hashtags")   #{video.hashtags.join(" ")}
                 p(class="watch__description")=video.description
+
+block scripts 
+    script(src="/static/js/videoPlayer.js") 

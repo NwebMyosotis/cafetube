@@ -4,6 +4,16 @@ include mixins/video
 block content
     span=errorMessage
     div(class="side-space")
+        div.area__best-video
+            div.thumbnail__best-video
+            div.info__best-video
+                span 추천 동영상
+                h1.title__best-video 비디오 이름
+                div.uploader-area__best-video
+                    div.avatar__best-video
+                    span.nickname__best-video Nickname
+                span.views__best-video 조회수 0회﹒0000년 00월 00일
+                span.description__best-video 설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명설명 설명설명
         div(class="video-grid")
             each video in videos
                 +videoMixin(video)
