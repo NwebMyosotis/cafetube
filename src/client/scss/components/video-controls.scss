@@ -13,15 +13,16 @@
   justify-content: space-between;
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+
   #video__title {
-    margin: 20px 10px;
+    margin: 15px;
     color: white;
-    font-size: 23px;
+    font-size: 25px;
     font-weight: 300;
   }
   .video-controller {
     display: grid;
-    grid-template-columns: 1fr 6fr 1fr auto;
+    grid-template-columns: 1fr 8fr 1fr auto;
     justify-content: center;
     align-items: center;
     margin: 10px 20px;
@@ -33,10 +34,10 @@
       }
     }
     i {
-      font-size: 1.1vw;
+      font-size: 1vw;
     }
     #time {
-      font-size: 0.85vw;
+      font-size: 0.9vw;
     }
     #volume {
       display: flex;
@@ -49,19 +50,24 @@
       #volumeBar {
         margin-right: 1vw;
       }
+      .volumeBar__mute {
+        accent-color: gray;
+      }
+      .volumeBar__unmute {
+        accent-color: #b16e5c;
+      }
     }
     input[type="range"] {
       accent-color: #b16e5c;
       height: 5px;
     }
-    input[type="range"]::-webkit-slider-thumb {
-      visibility: hidden;
-    }
   }
+}
+.controller-showing {
+  opacity: 1;
 }
 .watch__video-area:hover {
   .area__video-controller {
-    opacity: 1;
     #play,
     #volume,
     #input,

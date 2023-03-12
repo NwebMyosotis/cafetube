@@ -36,5 +36,5 @@ export const uploadThumbnail = multer({
 
 export const uploadVideo = multer({
   dest: `uploads/videos/`,
-  limits: { fileSize: 10485760 }, //10mb 제한
+  // limits: { fileSize: 10485760 }, //10mb 제한
 });
