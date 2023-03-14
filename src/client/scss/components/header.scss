@@ -70,6 +70,7 @@ header {
     flex-direction: column;
     align-items: end;
     .header-nav__loggedIn_area {
+      margin-right: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -78,22 +79,27 @@ header {
     .header-nav__avatar {
       width: 47px;
       border-radius: 50%;
+      cursor: pointer;
     }
     .header-nav__ul {
       position: absolute;
-      top: 100px;
+      top: 80px;
       padding: 0px 10px;
       padding-bottom: 10px;
-      display: flex;
+      display: none;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-decoration: none;
       background-color: white;
-      box-shadow: 1px 2px 3px gray;
+      box-shadow: 1px 1.5px 3px gray;
+      border-radius: 0 0 10px 10px;
       li {
-        margin-top: 20px;
+        position: relative;
+        margin-top: 15px;
+        margin-bottom: 10px;
         font-size: 25px;
+        opacity: 0;
         a {
           color: gray;
           display: flex;
@@ -104,6 +110,39 @@ header {
             font-size: 16px;
           }
         }
+      }
+    }
+    @keyframes navBtnAnimation {
+      from {
+        opacity: 0;
+        top: -10px;
+      }
+      to {
+        opacity: 1;
+        top: 0;
+      }
+    }
+    @keyframes navUlAnimation {
+      from {
+        opacity: 0;
+        top: 80px;
+      }
+      to {
+        opacity: 1;
+        top: 100px;
+      }
+    }
+    .header-nav__ul_show {
+      display: flex;
+      animation: navUlAnimation 0.55s ease-in-out forwards;
+      .showing-mypage {
+        animation: navBtnAnimation 0.15s ease-in-out 0.1s forwards;
+      }
+      .showing-upload {
+        animation: navBtnAnimation 0.15s ease-in-out 0.2s forwards;
+      }
+      .showing-logout {
+        animation: navBtnAnimation 0.15s ease-in-out 0.3s forwards;
       }
     }
   }

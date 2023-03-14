@@ -21,7 +21,6 @@ export const home = async (req, res) => {
 export const getWatch = async (req, res) => {
   const { id } = req.params;
   const video = await Video.findById(id).populate("uploader");
-  console.log(video);
   if (!video) {
     return res
       .status(404)
@@ -92,4 +91,15 @@ export const deleteVideo = async (req, res) => {
   }
   await Video.findByIdAndDelete(id);
   return res.status(200).redirect("/");
+};
+
+export const registerViews = async (req, res) => {
+  const { id } = req.params;
+  const video = await Video.findById(id);
+  if (!video) {
+    return res.sendStatus(404);
+  }
+  video.meta.views = video.meta.views + 1;
+  await video.save();
+  return res.sendStatus(200);
 };

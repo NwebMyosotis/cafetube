@@ -82,6 +82,9 @@
     background-color: #f6f4f1;
     line-height: 1.5;
     font-size: 15px;
+    .watch__views {
+      font-weight: 600;
+    }
     .watch__createdAt {
       font-weight: 600;
     }
@@ -89,6 +92,7 @@
       color: #5d6ec7;
     }
     .watch__description {
+      margin-top: 10px;
       color: rgb(33, 33, 33);
     }
   }

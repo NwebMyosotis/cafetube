@@ -10,6 +10,7 @@ const volumeBar = document.getElementById("volumeBar");
 const fullScreenBtn = document.getElementById("fullScreen");
 const videoScreenArea = document.querySelector(".watch__video-area");
 const videoControllerArea = document.querySelector(".area__video-controller");
+const videoPlayPauseArea = document.querySelector(".area__video-click");
 
 let controllerTimeout = null;
 
@@ -100,8 +101,16 @@ const handleMouseLeave = () => {
   hideController();
 };
 
+const handleEnded = async () => {
+  const { id } = videoScreenArea.dataset;
+  await fetch(`/api/video/${id}/views`, {
+    method: "POST",
+  });
+};
+
 video.addEventListener("loadedmetadata", handleLoaddedMetadata);
 video.addEventListener("timeupdate", handleTimeupdate);
+video.addEventListener("ended", handleEnded);
 playBtn.addEventListener("click", handlePlayBtn);
 timeline.addEventListener("input", handleTimelineMove);
 muteBtn.addEventListener("click", handleMuteBtn);
@@ -110,5 +119,7 @@ fullScreenBtn.addEventListener("click", handleFullscrren);
 document.addEventListener("fullscreenchange", handleFullscrrenChange);
 videoControllerArea.addEventListener("mousemove", handleMousemove);
 videoControllerArea.addEventListener("mouseleave", handleMouseLeave);
-videoControllerArea.addEventListener("click", handlePlayBtn);
-videoControllerArea.addEventListener("dblclick", handleFullscrren);
+videoPlayPauseArea.addEventListener("click", handlePlayBtn);
+videoPlayPauseArea.addEventListener("dblclick", handleFullscrren);
+videoPlayPauseArea.addEventListener("mousemove", handleMousemove);
+videoPlayPauseArea.addEventListener("mouseleave", handleMouseLeave);

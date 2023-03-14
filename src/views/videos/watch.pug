@@ -1,6 +1,6 @@
 extends ../base
 block content 
-    div(class="watch__video-area")
+    div(class="watch__video-area" data-id=video._id)
         video(src="/" + video.videoUrl, class="watch__video")
         div.area__video-controller
             span#video__title=video.title
@@ -19,7 +19,8 @@ block content
                     input(type="range", min="0", max="1", step="0.05")#volumeBar
                 span#fullScreen
                     i(class="fa-solid fa-expand")
-    
+        div.area__video-click
+
     div(class="side-space")
         div(class="watch__info")
             h2(class="watch__title")=video.title
@@ -36,7 +37,8 @@ block content
                         a(href=`${video._id}/delete`) 
                             i(class="fa-solid fa-trash")  삭제
             div(class="watch__info_description")
-                small(class="watch__createdAt") #{video.createdAt}
+                small(class="watch__views") 조회수 #{video.meta.views}회﹒
+                small(class="watch__createdAt")   #{video.createdAt}
                 small(class="watch__hashtags")   #{video.hashtags.join(" ")}
                 p(class="watch__description")=video.description
 
